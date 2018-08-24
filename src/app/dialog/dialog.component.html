@@ -1,0 +1,24 @@
+<button class="close" mat-button mat-dialog-close><span>×</span></button>
+<h2 mat-dialog-title>{{deviceId}}</h2>
+<mat-dialog-content>
+  <mat-list>
+    <mat-list-item>Availability : {{status}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Type : {{deviceType}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Address : {{address}}</mat-list-item>
+  </mat-list>
+  <mat-form-field>
+    <mat-select placeholder="Select Vehicle" [ngModel]="selectedDevice" (ngModelChange)="onChange($event)"  >
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let vehicle of electric_vehicles" [value]="vehicle">
+        {{vehicle.reg_no}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+   
+</mat-dialog-content>
+<mat-dialog-actions>
+ <button mat-raised-button >Navigate</button>
+ <button mat-raised-button color="warn" disabled="{{buttonDisabled}}" (click)="onClickMe()">Charge Now</button>
+</mat-dialog-actions>

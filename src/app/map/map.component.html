@@ -1,0 +1,19 @@
+<agm-map 
+  [latitude]="current_lat" 
+  [longitude]="current_lng"
+  [zoom]="zoom">
+  <!-- <agm-direction [origin]="origin" [destination]="destination">
+    </agm-direction> -->
+  <agm-marker *ngFor="let c of charger"
+    [latitude]="c.lat"
+    [longitude]="c.lng"
+    [iconUrl]="markerIconUrl(c.charger_type,c.status)"
+    (markerClick)="openDialog(c)"
+    >
+</agm-marker>
+<agm-marker
+    [latitude]="current_lat"
+    [longitude]="current_lng"
+    [iconUrl]="myIconUrl()">
+</agm-marker>
+</agm-map>

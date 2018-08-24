@@ -1,0 +1,49 @@
+<div class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <a routerLink="/"><b>{{appNamelg}}</b>{{appNamest}}</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form #loginForm="ngForm" (ngSubmit)="login($event)">
+          <div class="form-group has-feedback">
+            <input [class.error]="!email.valid && !email.pristine" type="text" (input)="errorMessage=''" name="email" [(ngModel)]="loginModel.username" class="form-control" #email="ngModel" placeholder="Username" required>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            <label [hidden]="email.valid || email.pristine" class="error">Username is required</label>
+          </div>
+          <div class="form-group has-feedback">
+            <input [class.error]="!password.valid && !password.pristine" (input)="errorMessage=''" type="password" name="password" [(ngModel)]="loginModel.password" class="form-control" #password="ngModel" placeholder="Pin" required>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <label [hidden]="password.valid || password.pristine" class="error">PIN is required</label>
+            <label *ngIf="errorMessage" class="error">{{errorMessage}}</label>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <a routerLink="/forgot-password">Forgot password</a><br>
+              <a routerLink="/register">Register</a>
+            </div>
+            <div class="col-xs-6">
+              <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary btn-block btn-flat">Log In</button>
+            </div>
+          </div>
+        </form>
+  
+
+      <!-- <div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+          Facebook</a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+          Google+</a>
+      </div> -->
+      <!-- /.social-auth-links -->
+
+      <!-- <a href="#">I forgot my password</a><br>
+      <a routerLink="/register" class="text-center">Register a new membership</a> -->
+
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+</div>
